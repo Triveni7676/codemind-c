@@ -1,44 +1,43 @@
 #include<stdio.h>
 int main()
 {
-    int n,arr[100],i,j,sum=0;
+    int a[100],i,j,k=0,c,n;
+    float s=0,avg;
     scanf("%d",&n);
     for(i=0;i<n;i++)
     {
-        scanf("%d",&arr[i]);
+        scanf("%d",&a[i]);
     }
-       int c=0,brr[100],k=0,max=0,min=1000;
-       float d=0;
     for(i=0;i<n;i++)
     {
-        sum=0;
-        for(j=0;j<n;j++)
+        c=1;
+        if(a[i]==-1)
         {
-            if(arr[i]==arr[j])
+            continue;
+        }
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]==a[j])
             {
-                sum++;
+                c++;
+                a[j]=-1;
             }
         }
-        if(sum==arr[i])
+        if(c==a[i])
         {
-           // printf("%d ",arr[i]);
-            brr[k]=arr[i];
-            arr[i]=0;
             k++;
-            //printf("%d",c);
+            //printf("%d ",a[i]);
+            s=s+a[i];
         }
     }
-    if(k==0)
-    {
-        printf("-1");
-    }
+   if(k!=0)
+   {
+        avg=s/k;
+        printf("%.2f",avg);
+   }
+    
     else
     {
-        for(i=0;i<k;i++)
-        {
-            d=d+brr[i];
-        }
-        float avg=d/k;
-        printf("%.2f",avg);
+        printf("-1");
     }
 }
